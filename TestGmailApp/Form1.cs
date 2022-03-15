@@ -16,7 +16,6 @@ using Google.Apis.Util.Store;
 using static Google.Apis.Gmail.v1.GmailService;
 using MimeKit;
 using System.Xml.Serialization;
-using ErpFramework.Settings;
 using DevExpress.XtraEditors;
 
 namespace TestGmailApp
@@ -33,7 +32,7 @@ namespace TestGmailApp
         {
             InitializeComponent();
 
-            mailSettings.LoadFromXmlFile();
+            //mailSettings.LoadFromXmlFile();
 
             if (!string.IsNullOrEmpty(mailSettings.Username)
                 && Directory.Exists(Path.Combine(credPath, mailSettings.Username)))
@@ -191,7 +190,7 @@ namespace TestGmailApp
             var userGmailEmail = gmailProfile.EmailAddress;
             teFrom.Text = mailSettings.Username = userGmailEmail;
             MoveResponseTokenToEmailFolder(userGmailEmail);
-            mailSettings.SaveToXmlFile();
+            //mailSettings.SaveToXmlFile();
             sbGetGAccount.Text = "Αλλαγή Google Account";
         }
 
@@ -257,7 +256,6 @@ namespace TestGmailApp
             string resval = (local ?
                                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
                                 : Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)) + string.Format(@"\{0}", Application.ProductName);
-
 
             return resval;
         }
